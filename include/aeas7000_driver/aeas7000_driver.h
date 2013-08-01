@@ -71,7 +71,7 @@ public:
    * \brief Reads the current absolute position using SPI
    * \return Absolute value of encoder
    */
-  bool read();
+  uint16_t get();
 	
   /**
    * \brief Initializes the driver and the connected hardware
@@ -81,7 +81,7 @@ public:
   bool initialize();
   
 private:
-
+  uint8_t spi_channel_;
 };
 
 #endif // AEAS7000_Driver_H_
