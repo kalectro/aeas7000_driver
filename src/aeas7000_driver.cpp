@@ -64,6 +64,17 @@ bool Aeas7000Driver::initialize()
   return true;
 }
 
+uint16_t gray_to_binary(uint16_t gray)
+{
+    uint16_t result = gray & (1 << 15);
+    
+    for( int i = 14; i >= 0; --i )
+    {
+      result |= (gray ^ (result >> 1)) & (1 << i);
+    }
+    return result;
+}
+
 uint16_t Aeas7000Driver::get()
 {
   uint8_t spi_slave_select = spi_channel_;
@@ -80,11 +91,12 @@ uint16_t Aeas7000Driver::get()
     ROS_ERROR("Aeas7000Driver::get(): could not read input");
     return false;
   } 
-  // compose read position
+  // compose read position as Gray Code
   uint16_t position = data[0];
   position = (position << 8) | data[1];
   
-  return position;
+  // return position as binary
+  return gray_to_binary(position);
 }
 
 

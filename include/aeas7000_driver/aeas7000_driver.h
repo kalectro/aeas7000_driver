@@ -81,6 +81,13 @@ public:
   bool initialize();
   
 private:
+  /**
+   * \brief Converts a gray value to binary
+   * \param gray Input gray value
+   * \return binary value
+   */
+  uint16_t gray_to_binary(uint16_t gray)
+  
   uint8_t spi_channel_;
 };
 
