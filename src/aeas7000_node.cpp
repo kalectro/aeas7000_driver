@@ -64,9 +64,6 @@ int main( int argc, char **argv )
   ros::Rate loop_rate_Hz(10);
   loop_rate_Hz.sleep();
   
-  bool value = 1;
-  bool value2 = 0;
-	
   while( nh.ok() )
   {
     ROS_INFO("Encoder value: %u", my_encoder->get( ) );

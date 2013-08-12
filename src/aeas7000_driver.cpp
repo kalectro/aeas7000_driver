@@ -64,7 +64,7 @@ bool Aeas7000Driver::initialize()
   return true;
 }
 
-uint16_t gray_to_binary(uint16_t gray)
+uint16_t Aeas7000Driver::gray_to_binary(uint16_t gray)
 {
     uint16_t result = gray & (1 << 15);
     
